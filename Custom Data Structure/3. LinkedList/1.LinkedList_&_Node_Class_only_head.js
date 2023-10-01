@@ -19,6 +19,7 @@ class LinkedList {
     return this.size;
   }
 
+  // Insertion at Start
   prepend(value) {
     // Time Complexity = O(1)
     const node = new Node(value);
@@ -33,6 +34,7 @@ class LinkedList {
     this.size++;
   }
 
+  // Insertion at End
   append(value) {
     // Time Complexity = O(n)
     let node = new Node(value);
@@ -143,6 +145,22 @@ class LinkedList {
     return -1;
   }
 
+  reverse() {
+    if (this.isEmpty()) {
+      return null;
+    }
+
+    let prev = null;
+    let curr = this.head;
+    while (curr) {
+      let Next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = Next;
+    }
+    this.head = prev;
+  }
+
   print() {
     if (this.isEmpty()) {
       console.log("List is Empty!");
@@ -211,5 +229,8 @@ list.print();
 // list.print();
 // console.log(list.getSize());
 
-console.log(list.search(20));
-console.log(list.search(40));
+// console.log(list.search(20));
+// console.log(list.search(40));
+
+list.reverse();
+list.print();
